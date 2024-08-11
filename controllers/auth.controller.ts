@@ -9,18 +9,33 @@ interface Body {
   password: string;
   confirmPassword: string;
   gender: string;
+  isSeller: boolean;
   profile: string;
 }
 
 export const signup = async (req: { body: Body }, res: any) => {
   try {
-    const { fullName, email, password, confirmPassword, gender, profile } =
-      req.body;
+    const {
+      fullName,
+      email,
+      password,
+      confirmPassword,
+      gender,
+      isSeller,
+      profile,
+    } = req.body;
 
     if (!profile) {
       return res.status(400).json({ message: "Profile is required" });
     }
-    if (!email || !fullName || !password || !confirmPassword || !gender) {
+    if (
+      !email ||
+      !fullName ||
+      !isSeller ||
+      !password ||
+      !confirmPassword ||
+      !gender
+    ) {
       return res.status(400).json({ message: "All fields are required" });
     }
     if (password !== confirmPassword) {
@@ -39,6 +54,7 @@ export const signup = async (req: { body: Body }, res: any) => {
       email,
       password: hashedPassword,
       gender,
+      isSeller,
       profile: profile,
     });
     if (newUser) {
@@ -53,6 +69,7 @@ export const signup = async (req: { body: Body }, res: any) => {
       fullName: newUser.fullName,
       email: newUser.email,
       profile: newUser.profile,
+      isSeller: newUser.isSeller,
     });
   } catch (error) {
     console.log("[+] Error occured in Signup controller", error);
