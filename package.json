@@ -4,7 +4,7 @@
   "description": "a ecommerce platform",
   "main": "index.js",
   "scripts": {
-    "dev": "npx ts-node index.ts",
+    "dev": "npx nodemon index.ts",
     "build": "npx tsc  ",
     "start": "nodemon dist/index.js"
   },
@@ -17,5 +17,15 @@
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2"
   }
 }
