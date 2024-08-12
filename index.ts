@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import authRouter from "./routes/auth.route";
+import mainRouter from "./routes/main.route";
 import connectDb from "./utils/connectDb";
 dotenv.config();
 
@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api/auth/", authRouter);
+app.use(mainRouter);
 
 app.listen(port, () =>
   console.log(`Server started at : http://localhost:${port}/`)
